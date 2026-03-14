@@ -10,86 +10,78 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: #121212 url('bg.png') no-repeat center center fixed;
-            background-size: cover;
             font-family: 'Archivo', sans-serif;
+            background-color: #000;
+            color: white;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            color: white;
             overflow: hidden;
+        }
+
+        /* GRAIN & VIGNETTE OVERLAY */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle, transparent 10%, rgba(0,0,0,0.85) 100%),
+                url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        #bg-video {
+            position: fixed;
+            right: 0; bottom: 0;
+            min-width: 100%; min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            transform: scale(1.1);
+            filter: brightness(0.4) contrast(1.2);
         }
 
         .container {
             width: 90%;
-            max-width: 400px;
+            max-width: 420px;
             text-align: center;
-            z-index: 10;
+            z-index: 30;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .profile-pic {
-            width: 96px;
-            height: 96px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            margin-bottom: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.9);
         }
 
         h1 { 
-            font-size: 1.8rem; /* Slightly bigger than button text (1.3rem) */
-            margin-bottom: 25px; 
+            font-size: 3.5rem;
+            margin-bottom: 40px; 
             font-weight: 900;
-            letter-spacing: -0.5px;
+            letter-spacing: -3px;
             color: white;
-            line-height: 1.2;
-            /* 6px Dense Outline */
-            text-shadow: 
-                6px 6px 0 #000, -6px -6px 0 #000, 6px -6px 0 #000, -6px 6px 0 #000,
-                0px 6px 0 #000, 0px -6px 0 #000, 6px 0px 0 #000, -6px 0px 0 #000,
-                3px 6px 0 #000, -3px 6px 0 #000, 3px -6px 0 #000, -3px -6px 0 #000,
-                6px 3px 0 #000, 6px -3px 0 #000, -6px 3px 0 #000, -6px -3px 0 #000;
+            text-transform: lowercase;
+            line-height: 1;
+            
+            /* THE OUTLINE FIX */
+            -webkit-text-stroke: 6px black;
+            paint-order: stroke fill;
         }
 
-        .link-btn {
+        .btn {
             display: block;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 12px;
-            text-decoration: none;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            padding: 24px;
             color: white;
-            font-weight: 900;
-            font-size: 1.3rem;
-            transition: transform 0.2s ease, background 0.2s ease;
-            /* 3px Outline */
-            text-shadow: 
-                3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000,
-                0px 3px 0 #000, 0px -3px 0 #000, 3px 0px 0 #000, -3px 0px 0 #000;
-        }
-
-        .link-btn:hover {
-            transform: scale(1.04);
-            background: rgba(255, 255, 255, 0.2);
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <img src="https://github.com/xilfo.png" alt="xilfo" class="profile-pic">
-        
-        <h1>xilfo</h1>
-
-        <a href="#" class="link-btn">discord</a>
-        <a href="#" class="link-btn">socials</a>
-        <a href="#" class="link-btn">coming soon</a>
-    </div>
-
-</body>
-</html>
+            font-
