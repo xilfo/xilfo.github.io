@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>xilfo</title>
     <style>
-        /* Importing Archivo with weights 400 and 900 */
-        @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;900&display=swap');
+        /* Importing Archivo Black */
+        @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@900&display=swap');
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
+            /* Using your uploaded background */
             background: #121212 url('bg.png') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Archivo', sans-serif;
@@ -39,57 +40,19 @@
         }
 
         h1 { 
-            font-size: 2.2rem; 
+            font-size: 2.5rem; 
             margin-bottom: 30px; 
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: -1px;
             color: white;
-            /* The 2px Black Stroke */
-            -webkit-text-stroke: 2px black;
-            paint-order: stroke fill;
-        }
-
-        .link-btn {
-            display: block;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 15px;
-            text-decoration: none;
-            color: white;
-            font-weight: 900;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            /* 2px Stroke on buttons */
-            -webkit-text-stroke: 2px black;
-            paint-order: stroke fill;
-        }
-
-        .link-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px) scale(1.02);
-            border-color: rgba(255, 255, 255, 0.4);
-            -webkit-text-stroke: 0px black;
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <img src="https://github.com/xilfo.png" alt="xilfo" class="profile-pic">
-        <h1>@xilfo</h1>
-
-        <a href="#" class="link-btn">Discord</a>
-        <a href="#" class="link-btn">Socials</a>
-        <a href="#" class="link-btn">Coming Soon</a>
-    </div>
-
-</body>
-</html>
+            /* Precise 2px Black Outline using Shadow Stack */
+            text-shadow: 
+                -2px -2px 0 #000,  
+                 2px -2px 0 #000,
+                -2px  2px 0 #000,
+                 2px  2px 0 #000,
+                -1px  0px 0 #000,
+                 1px  0px 0 #000,
+                 0px -1px 0 #000,
+                 0px  1px 0 #000;
