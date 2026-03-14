@@ -79,7 +79,7 @@
     </style>
 </head>
 <body>
-    <video id="bg-video" autoplay muted loop playsinline>
+    <video id="autoplay muted loop playsinline" background="auto">
         <source src="bg.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
@@ -88,5 +88,8 @@
         <h1>xilfo</h1>
         <a href="" class="btn">/// COMING SOON ///</a>
     </div>
+    <script>
+        document.getElementById('bg-video').style.filter = 'none';
+    </script>
 </body>
 </html>
