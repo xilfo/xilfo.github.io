@@ -20,7 +20,6 @@
             overflow: hidden;
         }
 
-        /* 1. THE VIDEO (Deepest Layer) */
         #bg-video {
             position: fixed;
             top: 50%; left: 50%;
@@ -31,20 +30,11 @@
             filter: brightness(0.4) contrast(1.2);
         }
 
-        /* 2. THE PARTICLE CANVAS (Middle Layer) */
-        #bg-canvas {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 2; /* Sits on top of video */
-            display: block;
-        }
-
         .overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.88) 100%);
-            z-index: 3;
+            background: radial-gradient(circle, transparent 10%, rgba(0,0,0,0.85) 100%);
+            z-index: 2;
             pointer-events: none;
         }
 
@@ -57,13 +47,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 0;
         }
 
         .profile-pic {
             width: 120px; height: 120px;
             border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.1);
             margin-bottom: 20px;
             object-fit: cover;
         }
@@ -84,46 +73,28 @@
             display: block;
             width: 100%;
             background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 2px;
-            padding: 22px 24px;
+            padding: 24px;
             color: white;
             font-family: 'Archivo', sans-serif;
             font-weight: 900;
-            font-size: 1rem;
+            font-size: 1.1rem;
             letter-spacing: 4px;
             text-decoration: none;
-            margin-bottom: 14px;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            margin-bottom: 15px;
+            transition: 0.2s ease;
             text-shadow: 2px 2px 0 #000;
-            backdrop-filter: blur(4px);
+            cursor: pointer;
         }
 
-        .btn:hover {
-            background: rgba(255,255,255,0.12);
-            border-color: rgba(255,255,255,0.3);
-            transform: scale(1.02);
-        }
+        .btn:hover { background: rgba(255,255,255,0.1); transform: scale(1.02); }
 
-        .pulse { animation: pulse-anim 6s infinite ease-in-out; }
-        @keyframes pulse-anim { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
-
-        .toast {
-            position: fixed;
-            bottom: 32px;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(12px);
-            color: white;
-            padding: 12px 24px;
-            opacity: 0;
-            transition: 0.3s ease;
-            z-index: 100;
+        .pulse { animation: pulse-animation 6s infinite ease-in-out; }
+        @keyframes pulse-animation {
+            0%, 100% { opacity: 0.5; }
+            50%       { opacity: 1;   }
         }
-        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
     </style>
 </head>
 <body>
@@ -132,86 +103,15 @@
         <source src="bg.mp4" type="video/mp4">
     </video>
 
-    <canvas id="bg-canvas"></canvas>
     <div class="overlay"></div>
 
     <div class="container">
-        <img src="https://github.com/xilfo.png" alt="xilfo" class="profile-pic">
+        <img src="https://github.com/xilfo.png"
+             alt="xilfo"
+             class="profile-pic">
         <h1>xilfo</h1>
-        <button class="btn pulse" onclick="showToast('/// COMING SOON ///')">/// COMING SOON ///</button>
-        <a class="btn" href="https://discord.gg/" target="_blank">/// DISCORD ///</a>
-        <a class="btn" href="#socials" id="socials-btn">/// SOCIALS ///</a>
+        <a href="#" class="btn pulse">/// COMING SOON ///</a>
     </div>
 
-    <div class="toast" id="toast"></div>
-
-    <script>
-    (function () {
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let W, H, particles = [];
-
-        function resize() {
-            W = canvas.width = window.innerWidth;
-            H = canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resize);
-        resize();
-
-        class Particle {
-            constructor() { this.reset(true); }
-            reset(init) {
-                this.x = Math.random() * W;
-                this.y = init ? Math.random() * H : H + 10;
-                this.r = Math.random() * 1.5 + 0.3;
-                this.sp = Math.random() * 0.4 + 0.1;
-                this.op = Math.random() * 0.5 + 0.1;
-            }
-            update() {
-                this.y -= this.sp;
-                if (this.y < -10) this.reset(false);
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255,255,255,${this.op})`;
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < 100; i++) particles.push(new Particle());
-
-        function frame() {
-            ctx.clearRect(0, 0, W, H); // This makes the canvas transparent so you see the video!
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(frame);
-        }
-        frame();
-    })();
-
-    function showToast(msg) {
-        const el = document.getElementById('toast');
-        el.textContent = msg;
-        el.classList.add('show');
-        setTimeout(() => el.classList.remove('show'), 2000);
-    }
-
-    document.getElementById('socials-btn').addEventListener('click', function(e) {
-        e.preventDefault();
-        const socials = [
-            { label: '/// TWITTER ///', url: 'https://twitter.com/xilfo' },
-            { label: '/// INSTAGRAM ///', url: 'https://instagram.com/xilfo' }
-        ];
-        const container = this.parentElement;
-        this.remove();
-        socials.forEach(s => {
-            const a = document.createElement('a');
-            a.className = 'btn';
-            a.href = s.url;
-            a.textContent = s.label;
-            container.appendChild(a);
-        });
-    });
-    </script>
 </body>
 </html>
