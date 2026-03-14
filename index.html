@@ -6,11 +6,7 @@
     <title>xilfo</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@900&display=swap');
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html, body { width: 100%; height: 100%; }
-
         body {
             font-family: 'Archivo', sans-serif;
             background-color: #000;
@@ -21,25 +17,21 @@
             justify-content: center;
             overflow: hidden;
         }
-
         #bg-video {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%;
             z-index: 1;
+            transform: translate(-50%, -50%) scale(1.1);
             object-fit: cover;
-            display: block;
         }
-
         .overlay {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.85) 100%);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, transparent 10%, rgba(0,0,0,0.85) 100%);
             z-index: 2;
             pointer-events: none;
         }
-
         .container {
             position: relative;
             width: 90%;
@@ -50,18 +42,15 @@
             flex-direction: column;
             align-items: center;
         }
-
         .profile-pic {
             width: 120px; height: 120px;
             border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.1);
+            border: 2px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 20px;
-            object-fit: cover;
         }
-
-        h1 {
+        h1 { 
             font-size: 3.5rem;
-            margin-bottom: 40px;
+            margin-bottom: 40px; 
             font-weight: 900;
             letter-spacing: -3px;
             color: white;
@@ -70,56 +59,14 @@
             -webkit-text-stroke: 6px black;
             paint-order: stroke fill;
         }
-
         .btn {
-            display: block;
-            width: 100%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+            display: block; width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 2px;
             padding: 24px;
             color: white;
-            font-family: 'Archivo', sans-serif;
             font-weight: 900;
             font-size: 1.1rem;
             letter-spacing: 4px;
             text-decoration: none;
-            margin-bottom: 15px;
-            transition: 0.2s ease;
-            text-shadow: 2px 2px 0 #000;
-            cursor: pointer;
-        }
-
-        .btn:hover { background: rgba(255,255,255,0.1); transform: scale(1.02); }
-
-        .pulse { animation: pulse-animation 6s infinite ease-in-out; }
-        @keyframes pulse-animation {
-            0%, 100% { opacity: 0.5; }
-            50%       { opacity: 1;   }
-        }
-    </style>
-</head>
-<body>
-
-    <video id="bg-video" autoplay muted loop playsinline preload="auto">
-        <source src="bg.mp4" type="video/mp4">
-    </video>
-
-    <div class="overlay"></div>
-
-    <div class="container">
-        <img src="https://github.com/xilfo.png" alt="xilfo" class="profile-pic">
-        <h1>xilfo</h1>
-        <a href="#" class="btn pulse">/// COMING SOON ///</a>
-    </div>
-
-    <script>
-        const v = document.getElementById('bg-video');
-        v.muted = true;
-        v.play().catch(() => {
-            document.addEventListener('click', () => v.play(), { once: true });
-        });
-    </script>
-
-</body>
-</html>
