@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xilfo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #121212 url('bg.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: -apple-system, system-ui, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: white;
+        }
+        .container { width: 90%; max-width: 400px; text-align: center; }
+        .profile-pic {
+            width: 96px; height: 96px; border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        h1 { font-size: 1.5rem; margin-bottom: 30px; letter-spacing: -0.5px; }
+        .link-btn {
+            display: block; background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px;
+            padding: 16px; margin-bottom: 12px;
+            text-decoration: none; color: white; font-weight: 500;
+            transition: 0.25s all ease;
+        }
+        .link-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://github.com/xilfo.png" class="profile-pic">
+        <h1>@xilfo</h1>
+        <a href="#" class="link-btn">Discord</a>
+        <a href="#" class="link-btn">Socials</a>
+        <a href="#" class="link-btn">Coming Soon</a>
+    </div>
+</body>
+</html>
