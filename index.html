@@ -6,7 +6,9 @@
     <title>xilfo</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@900&display=swap');
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Archivo', sans-serif;
             background-color: #000;
@@ -17,24 +19,18 @@
             justify-content: center;
             overflow: hidden;
         }
+
+        /* VIDEO: Clean, No Filters */
         #bg-video {
             position: fixed;
             top: 50%; left: 50%;
             min-width: 100%; min-height: 100%;
-            z-index: 1;
-            transform: translate(-50%, -50%) scale(1.1);
+            z-index: -1;
+            transform: translate(-50%, -50%);
             object-fit: cover;
-            filter: brightness(0.4) contrast(1.2);
         }
-        .overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, transparent 10%, rgba(0,0,0,0.85) 100%);
-            z-index: 2;
-            pointer-events: none;
-        }
+
         .container {
-            position: relative;
             width: 90%;
             max-width: 420px;
             text-align: center;
@@ -43,12 +39,14 @@
             flex-direction: column;
             align-items: center;
         }
+
         .profile-pic {
-            width: 120px; height: 120px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 20px;
         }
+
         h1 { 
             font-size: 3.5rem;
             margin-bottom: 40px; 
@@ -57,11 +55,15 @@
             color: white;
             text-transform: lowercase;
             line-height: 1;
+            
+            /* FIXED OUTLINE */
             -webkit-text-stroke: 6px black;
             paint-order: stroke fill;
         }
+
         .btn {
-            display: block; width: 100%;
+            display: block;
+            width: 100%;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 2px;
@@ -72,24 +74,29 @@
             letter-spacing: 4px;
             text-decoration: none;
             margin-bottom: 15px;
-            transition: 0.2s ease;
-            text-shadow: 2px 2px 0 #000;
+            transition: transform 0.2s ease;
         }
-        .btn:hover { background: rgba(255,255,255,0.1); transform: scale(1.02); }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: scale(1.02);
+        }
     </style>
 </head>
 <body>
-    <video id="autoplay muted loop playsinline" background="auto">
+
+    <video id="bg-video" autoplay muted loop playsinline preload="auto">
         <source src="bg.mp4" type="video/mp4">
     </video>
-    <div class="overlay"></div>
+
     <div class="container">
         <img src="https://github.com/xilfo.png" alt="xilfo" class="profile-pic">
         <h1>xilfo</h1>
-        <a href="" class="btn">/// COMING SOON ///</a>
+        
+        <a href="#" class="btn">/// COMING SOON ///</a>
+        <a href="https://discord.gg/" class="btn">/// DISCORD ///</a>
+        <a href="#" class="btn">/// SOCIALS ///</a>
     </div>
-    <script>
-        document.getElementById('bg-video').style.filter = 'none';
-    </script>
+
 </body>
 </html>
