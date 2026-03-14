@@ -76,19 +76,17 @@
             text-shadow: 2px 2px 0 #000;
         }
         .btn:hover { background: rgba(255,255,255,0.1); transform: scale(1.02); }
-        .pulse { animation: pulse-animation 6s infinite ease-in-out; }
-        @keyframes pulse-animation { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
     </style>
 </head>
 <body>
-    <video id="bg-video" autoplay muted loop playsinline preload="auto">
+    <video id="bg-video" background="auto">
         <source src="bg.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
     <div class="container">
         <img src="https://github.com/xilfo.png" alt="xilfo" class="profile-pic">
         <h1>xilfo</h1>
-        <a href="#" class="btn pulse">/// COMING SOON ///</a>
+        <a href="#" class="btn">/// COMING SOON ///</a>
     </div>
     <script>
         document.getElementById('bg-video').style.filter = 'none';
