@@ -26,6 +26,7 @@
             width: 90%;
             max-width: 400px;
             text-align: center;
+            z-index: 10;
         }
 
         .profile-pic {
@@ -38,47 +39,45 @@
         }
 
         h1 { 
-            font-size: 3rem; /* Slightly larger for better readability with thick outline */
+            font-size: 3.5rem; 
             margin-bottom: 30px; 
             font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -1px;
+            /* REMOVED uppercase here */
+            letter-spacing: -2px;
             color: white;
-            
-            /* ULTIMATE 6PX OUTLINE - Multi-layered for smoothness */
+            line-height: 1;
+            /* Ultra-Dense 6px Outline for smoothness */
             text-shadow: 
-                -6px -6px 0 #000,  6px -6px 0 #000, -6px 6px 0 #000, 6px 6px 0 #000,
-                -6px  0px 0 #000,  6px  0px 0 #000,  0px -6px 0 #000, 0px 6px 0 #000,
-                -3px -6px 0 #000,  3px -6px 0 #000, -3px 6px 0 #000, 3px 6px 0 #000,
-                -6px -3px 0 #000,  6px -3px 0 #000, -6px 3px 0 #000, 6px 3px 0 #000;
+                6px 6px 0 #000, -6px -6px 0 #000, 6px -6px 0 #000, -6px 6px 0 #000,
+                0px 6px 0 #000, 0px -6px 0 #000, 6px 0px 0 #000, -6px 0px 0 #000,
+                3px 6px 0 #000, -3px 6px 0 #000, 3px -6px 0 #000, -3px -6px 0 #000,
+                6px 3px 0 #000, 6px -3px 0 #000, -6px 3px 0 #000, -6px -3px 0 #000;
         }
 
         .link-btn {
             display: block;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
-            padding: 18px;
+            padding: 20px;
             margin-bottom: 15px;
             text-decoration: none;
             color: white;
             font-weight: 900;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            /* 3PX OUTLINE for buttons to match your screenshot ratio */
+            font-size: 1.3rem;
+            /* REMOVED uppercase here */
+            transition: transform 0.2s ease, background 0.2s ease;
+            /* 3px Outline */
             text-shadow: 
-                -3px -3px 0 #000,  3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000,
-                -3px  0px 0 #000,  3px  0px 0 #000,  0px -3px 0 #000, 0px 3px 0 #000;
+                3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000,
+                0px 3px 0 #000, 0px -3px 0 #000, 3px 0px 0 #000, -3px 0px 0 #000;
         }
 
         .link-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px) scale(1.02);
-            border-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
@@ -86,11 +85,12 @@
 
     <div class="container">
         <img src="https://github.com/xilfo.png" alt="xilfo" class="profile-pic">
+        
         <h1>xilfo</h1>
 
-        <a href="#" class="link-btn">Discord</a>
-        <a href="#" class="link-btn">Socials</a>
-        <a href="#" class="link-btn">Coming Soon</a>
+        <a href="#" class="link-btn">discord</a>
+        <a href="#" class="link-btn">socials</a>
+        <a href="#" class="link-btn">coming soon</a>
     </div>
 
 </body>
