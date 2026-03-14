@@ -11,7 +11,7 @@
 
         body {
             font-family: 'Archivo', sans-serif;
-            background-color: #000;
+            background-color: #000; /* Pure black fallback */
             color: white;
             min-height: 100vh;
             display: flex;
@@ -20,7 +20,7 @@
             overflow: hidden;
         }
 
-        /* GRAIN & VIGNETTE OVERLAY */
+        /* Texture Overlay (Grain & Vignette) */
         body::before {
             content: "";
             position: fixed;
@@ -35,11 +35,12 @@
 
         #bg-video {
             position: fixed;
-            right: 0; bottom: 0;
+            top: 50%; left: 50%;
             min-width: 100%; min-height: 100%;
+            width: auto; height: auto;
             z-index: -1;
+            transform: translate(-50%, -50%) scale(1.1);
             object-fit: cover;
-            transform: scale(1.1);
             filter: brightness(0.4) contrast(1.2);
         }
 
@@ -54,8 +55,7 @@
         }
 
         .profile-pic {
-            width: 120px;
-            height: 120px;
+            width: 120px; height: 120px;
             border-radius: 50%;
             border: 2px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 20px;
@@ -66,22 +66,4 @@
             font-size: 3.5rem;
             margin-bottom: 40px; 
             font-weight: 900;
-            letter-spacing: -3px;
-            color: white;
-            text-transform: lowercase;
-            line-height: 1;
-            
-            /* THE OUTLINE FIX */
-            -webkit-text-stroke: 6px black;
-            paint-order: stroke fill;
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            padding: 24px;
-            color: white;
-            font-
+            letter-
