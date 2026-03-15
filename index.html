@@ -43,9 +43,9 @@
             border-radius: 50%;
             margin-bottom: 20px;
         }
-        h1 { 
+        h1 {
             font-size: 3.5rem;
-            margin-bottom: 40px; 
+            margin-bottom: 40px;
             font-weight: 900;
             letter-spacing: -3px;
             color: white;
@@ -83,8 +83,30 @@
     <div class="container">
         <img src="https://github.com/xilfo.png" alt="xilfo" class="profile-pic">
         <h1>xilfo</h1>
-        <a href="https://xilfo.github.io/" class="btn">/// COMING SOON ///</a>
-      <a href="https://www.youtube.com/watch?v=cPJUBQd-PNM" class="btn">/// YOUTUBE** ///</a>
+        <div id="buttons"></div>
     </div>
+
+    <script>
+        // ==============================
+        // ADD / EDIT BUTTONS HERE ONLY
+        // ==============================
+        const buttons = [
+            { label: "/// COMING SOON ///", url: "https://xilfo.github.io/" },
+            { label: "/// YOUTUBE** ///",   url: "https://xilfo.github.io/" },
+        ];
+        // ==============================
+
+        const container = document.getElementById("buttons");
+        buttons.forEach(({ label, url }) => {
+            const a = document.createElement("a");
+            a.href = url;
+            a.className = "btn";
+            a.textContent = label;
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
+            a.setAttribute("data-umami-event", label);
+            container.appendChild(a);
+        });
+    </script>
 </body>
 </html>
